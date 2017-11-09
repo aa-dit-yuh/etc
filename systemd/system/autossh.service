@@ -1,0 +1,10 @@
+[Unit]
+Description=Keeps a reverse SSH tunnel on port 1080 open
+After=network.target
+
+[Service]
+User=aditya
+ExecStart=/usr/bin/autossh -M 0 -ND 1080 -q -o "ServerAliveInterval 60" -o "ServerAliveCountMax 3" t2 
+
+[Install]
+WantedBy=multi-user.target
